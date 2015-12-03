@@ -19,10 +19,6 @@
   <property name="windowTitle">
    <string>TestManyDigitNewick</string>
   </property>
-  <property name="windowIcon">
-   <iconset resource="../../Games/GameAminoAcidFighter/GameAminoAcidFighter.qrc">
-    <normaloff>:/images/R.png</normaloff>:/images/R.png</iconset>
-  </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <item>
     <widget class="QWidget" name="widget_2" native="true">
@@ -106,8 +102,6 @@
    </item>
   </layout>
  </widget>
- <resources>
-  <include location="../../Games/GameAminoAcidFighter/GameAminoAcidFighter.qrc"/>
- </resources>
+ <resources/>
  <connections/>
 </ui>

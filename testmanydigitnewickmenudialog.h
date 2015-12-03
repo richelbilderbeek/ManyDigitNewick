@@ -4,13 +4,13 @@
 #include "menudialog.h"
 
 namespace ribi {
+namespace tmdn {
 
-struct TestManyDigitNewickMenuDialog : public ribi::MenuDialog
+struct MenuDialog : public ribi::MenuDialog
 {
-  TestManyDigitNewickMenuDialog();
+  MenuDialog();
   About GetAbout() const noexcept;
   Help GetHelp() const noexcept;
-  boost::shared_ptr<const Program> GetProgram() const noexcept;
   std::string GetVersion() const noexcept;
   std::vector<std::string> GetVersionHistory() const noexcept;
 
@@ -22,6 +22,7 @@ struct TestManyDigitNewickMenuDialog : public ribi::MenuDialog
   #endif
 };
 
+} //~namespace tmdn
 } //~namespace ribi
 
 #endif // TESTMANYDIGITNEWICKMENUDIALOG_H

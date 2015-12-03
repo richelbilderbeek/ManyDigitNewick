@@ -34,16 +34,17 @@ namespace Ui {
 }
 
 namespace ribi {
+namespace tmdn {
 
-class QtTestManyDigitNewickMainDialog : public QtHideAndShowDialog
+class QtMainDialog : public QtHideAndShowDialog
 {
   Q_OBJECT
 
 public:
-  explicit QtTestManyDigitNewickMainDialog(QWidget *parent = 0);
-  QtTestManyDigitNewickMainDialog(const QtTestManyDigitNewickMainDialog&) = delete;
-  QtTestManyDigitNewickMainDialog& operator=(const QtTestManyDigitNewickMainDialog&) = delete;
-  ~QtTestManyDigitNewickMainDialog();
+  explicit QtMainDialog(QWidget *parent = 0);
+  QtMainDialog(const QtMainDialog&) = delete;
+  QtMainDialog& operator=(const QtMainDialog&) = delete;
+  ~QtMainDialog();
 
 private:
   Ui::QtTestManyDigitNewickMainDialog *ui;
@@ -57,6 +58,7 @@ private slots:
   #endif
 };
 
+} //~namespace tmdn
 } //~namespace ribi
 
 #endif // QTTESTMANYDIGITNEWICKMAINDIALOG

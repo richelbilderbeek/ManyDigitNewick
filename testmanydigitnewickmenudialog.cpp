@@ -14,18 +14,17 @@
 #include "newickvector.h"
 #include "manydigitnewick.h"
 #include "testtimer.h"
-#include "richelbilderbeekprogram.h"
 #include "trace.h"
 #pragma GCC diagnostic pop
 
-ribi::TestManyDigitNewickMenuDialog::TestManyDigitNewickMenuDialog()
+ribi::tmdn::MenuDialog::MenuDialog()
 {
   #ifndef NDEBUG
   Test();
   #endif
 }
 
-int ribi::TestManyDigitNewickMenuDialog::ExecuteSpecific(const std::vector<std::string>& argv) noexcept
+int ribi::tmdn::MenuDialog::ExecuteSpecific(const std::vector<std::string>& argv) noexcept
 {
   const int argc = static_cast<int>(argv.size());
   if (argc > 3)
@@ -36,7 +35,7 @@ int ribi::TestManyDigitNewickMenuDialog::ExecuteSpecific(const std::vector<std::
   return 0;
 }
 
-ribi::About ribi::TestManyDigitNewickMenuDialog::GetAbout() const noexcept
+ribi::About ribi::tmdn::MenuDialog::GetAbout() const noexcept
 {
   About about(
     "Richel Bilderbeek",
@@ -54,7 +53,7 @@ ribi::About ribi::TestManyDigitNewickMenuDialog::GetAbout() const noexcept
   return about;
 }
 
-ribi::Help ribi::TestManyDigitNewickMenuDialog::GetHelp() const noexcept
+ribi::Help ribi::tmdn::MenuDialog::GetHelp() const noexcept
 {
   return Help(
     this->GetAbout().GetFileTitle(),
@@ -66,30 +65,22 @@ ribi::Help ribi::TestManyDigitNewickMenuDialog::GetHelp() const noexcept
   );
 }
 
-boost::shared_ptr<const ribi::Program> ribi::TestManyDigitNewickMenuDialog::GetProgram() const noexcept
+std::string ribi::tmdn::MenuDialog::GetVersion() const noexcept
 {
-  const boost::shared_ptr<const ribi::Program> p {
-    new ProgramTestManyDigitNewick
-  };
-  assert(p);
-  return p;
+  return "2.0";
 }
 
-std::string ribi::TestManyDigitNewickMenuDialog::GetVersion() const noexcept
-{
-  return "1.1";
-}
-
-std::vector<std::string> ribi::TestManyDigitNewickMenuDialog::GetVersionHistory() const noexcept
+std::vector<std::string> ribi::tmdn::MenuDialog::GetVersionHistory() const noexcept
 {
   return {
     "2011-03-02: version 1.0: initial version copied and from TestTwoDigitNewick",
-    "2014-05-08: version 1.1: conformized with ProjectRichelBilderbeek"
+    "2014-05-08: version 1.1: conformized with ProjectRichelBilderbeek",
+    "2015-12-03: version 2.0: moved to own GitHub",
   };
 }
 
 #ifndef NDEBUG
-void ribi::TestManyDigitNewickMenuDialog::Test() noexcept
+void ribi::tmdn::MenuDialog::Test() noexcept
 {
   {
     static bool is_tested{false};

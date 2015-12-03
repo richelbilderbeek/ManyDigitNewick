@@ -9,7 +9,7 @@
 int main(int argc, char* argv[])
 {
   QApplication a(argc, argv);
-  ribi::QtTestManyDigitNewickMenuDialog w;
+  ribi::tmdn::QtMenuDialog w;
   w.show();
   return a.exec();
 }

@@ -13,16 +13,17 @@ class QtTestManyDigitNewickMenuDialog;
 }
 
 namespace ribi {
+namespace tmdn {
 
-class QtTestManyDigitNewickMenuDialog : public QtHideAndShowDialog
+class QtMenuDialog : public QtHideAndShowDialog
 {
   Q_OBJECT
     
 public:
-  explicit QtTestManyDigitNewickMenuDialog(QWidget *parent = 0) noexcept;
-  QtTestManyDigitNewickMenuDialog(const QtTestManyDigitNewickMenuDialog&) = delete;
-  QtTestManyDigitNewickMenuDialog& operator=(const QtTestManyDigitNewickMenuDialog&) = delete;
-  ~QtTestManyDigitNewickMenuDialog() noexcept;
+  explicit QtMenuDialog(QWidget *parent = 0) noexcept;
+  QtMenuDialog(const QtMenuDialog&) = delete;
+  QtMenuDialog& operator=(const QtMenuDialog&) = delete;
+  ~QtMenuDialog() noexcept;
     
 private slots:
   void on_button_about_clicked() noexcept;
@@ -40,6 +41,8 @@ private:
   #endif
 };
 
+
+} //~namespace tmdn
 } //~namespace ribi
 
 #endif // QTTESTMANYDIGITNEWICKMENUDIALOG_H

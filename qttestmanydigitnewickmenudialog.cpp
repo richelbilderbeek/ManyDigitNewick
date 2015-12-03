@@ -17,7 +17,7 @@
 #include "trace.h"
 #pragma GCC diagnostic pop
 
-ribi::QtTestManyDigitNewickMenuDialog::QtTestManyDigitNewickMenuDialog(QWidget *parent) noexcept
+ribi::tmdn::QtMenuDialog::QtMenuDialog(QWidget *parent) noexcept
   : QtHideAndShowDialog(parent),
     ui(new Ui::QtTestManyDigitNewickMenuDialog)
 {
@@ -27,44 +27,44 @@ ribi::QtTestManyDigitNewickMenuDialog::QtTestManyDigitNewickMenuDialog(QWidget *
   ui->setupUi(this);
 }
 
-ribi::QtTestManyDigitNewickMenuDialog::~QtTestManyDigitNewickMenuDialog() noexcept
+ribi::tmdn::QtMenuDialog::~QtMenuDialog() noexcept
 {
   delete ui;
 }
 
-void ribi::QtTestManyDigitNewickMenuDialog::keyPressEvent(QKeyEvent * e)
+void ribi::tmdn::QtMenuDialog::keyPressEvent(QKeyEvent * e)
 {
   if (e->key() == Qt::Key_Escape) { close(); }
 }
 
-void ribi::QtTestManyDigitNewickMenuDialog::on_button_start_clicked() noexcept
+void ribi::tmdn::QtMenuDialog::on_button_start_clicked() noexcept
 {
-  QtTestManyDigitNewickMainDialog d;
+  QtMainDialog d;
   this->ShowChild(&d);
 }
 
-void ribi::QtTestManyDigitNewickMenuDialog::on_button_about_clicked() noexcept
+void ribi::tmdn::QtMenuDialog::on_button_about_clicked() noexcept
 {
-  QtAboutDialog d(TestManyDigitNewickMenuDialog().GetAbout());
+  QtAboutDialog d(MenuDialog().GetAbout());
   d.setWindowIcon(windowIcon());
   d.setStyleSheet(styleSheet());
   ShowChild(&d);
 }
 
-void ribi::QtTestManyDigitNewickMenuDialog::on_button_quit_clicked() noexcept
+void ribi::tmdn::QtMenuDialog::on_button_quit_clicked() noexcept
 {
   close();
 }
 
 #ifndef NDEBUG
-void ribi::QtTestManyDigitNewickMenuDialog::Test() noexcept
+void ribi::tmdn::QtMenuDialog::Test() noexcept
 {
   {
     static bool is_tested{false};
     if (is_tested) return;
     is_tested = true;
   }
-  QtTestManyDigitNewickMainDialog();
+  QtMainDialog();
   const TestTimer test_timer(__func__,__FILE__,1.0);
 }
 #endif

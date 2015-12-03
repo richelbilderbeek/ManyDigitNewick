@@ -49,7 +49,7 @@ along with this program.If not, see <http://www.gnu.org/licenses/>.
 
 #pragma GCC diagnostic pop
 
-ribi::QtTestManyDigitNewickMainDialog::QtTestManyDigitNewickMainDialog(QWidget *parent) :
+ribi::tmdn::QtMainDialog::QtMainDialog(QWidget *parent) :
     QtHideAndShowDialog(parent),
     ui(new Ui::QtTestManyDigitNewickMainDialog)
 {
@@ -58,13 +58,13 @@ ribi::QtTestManyDigitNewickMainDialog::QtTestManyDigitNewickMainDialog(QWidget *
     ui->edit_newick,
     static_cast<void (QLineEdit::*)(const QString&)>(&QLineEdit::textChanged),
     this,
-    &ribi::QtTestManyDigitNewickMainDialog::OnAnyChange
+    &ribi::tmdn::QtMainDialog::OnAnyChange
   );
   QObject::connect(
     ui->edit_theta,
     static_cast<void (QLineEdit::*)(const QString&)>(&QLineEdit::textChanged),
     this,
-    &ribi::QtTestManyDigitNewickMainDialog::OnAnyChange
+    &ribi::tmdn::QtMainDialog::OnAnyChange
   );
 
   //Put the dialog in the screen center
@@ -89,12 +89,12 @@ ribi::QtTestManyDigitNewickMainDialog::QtTestManyDigitNewickMainDialog(QWidget *
   OnAnyChange();
 }
 
-ribi::QtTestManyDigitNewickMainDialog::~QtTestManyDigitNewickMainDialog()
+ribi::tmdn::QtMainDialog::~QtMainDialog()
 {
   delete ui;
 }
 
-void ribi::QtTestManyDigitNewickMainDialog::OnAnyChange()
+void ribi::tmdn::QtMainDialog::OnAnyChange()
 {
   ui->button_calculate->setEnabled(false);
   ui->edit_text->clear();
@@ -257,7 +257,7 @@ void ribi::QtTestManyDigitNewickMainDialog::OnAnyChange()
   */
 }
 
-void ribi::QtTestManyDigitNewickMainDialog::on_button_calculate_clicked()
+void ribi::tmdn::QtMainDialog::on_button_calculate_clicked()
 {
   ui->edit_text->clear();
   //Check Newicks
@@ -284,7 +284,7 @@ void ribi::QtTestManyDigitNewickMainDialog::on_button_calculate_clicked()
 }
 
 #ifndef NDEBUG
-void ribi::QtTestManyDigitNewickMainDialog::Test() noexcept
+void ribi::tmdn::QtMainDialog::Test() noexcept
 {
   {
     static bool is_tested{false};
