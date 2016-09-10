@@ -1,3 +1,3 @@
 #!/bin/bash
-qmake KalmanFiltererDesktop.pro
+qmake TestManyDigitNewickDesktop.pro
 make

@@ -1,3 +1,3 @@
 #!/bin/bash
-qmake KalmanFiltererConsole.pro
+qmake TestManyDigitNewickConsole.pro
 make
