@@ -1,10 +1,10 @@
-INCLUDEPATH += ../TestManyDigitNewick
+INCLUDEPATH += ../ManyDigitNewick
 
 SOURCES += \
-    ../TestManyDigitNewick/testmanydigitnewickmenudialog.cpp
+    $$PWD/testmanydigitnewickmenudialog.cpp
 
 HEADERS += \
-    ../TestManyDigitNewick/testmanydigitnewickmenudialog.h
+    $$PWD/testmanydigitnewickmenudialog.h
 
 RESOURCES += \
-    ../TestManyDigitNewick/TestManyDigitNewick.qrc
+    $$PWD/TestManyDigitNewick.qrc
