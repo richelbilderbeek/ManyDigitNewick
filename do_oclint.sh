@@ -9,6 +9,9 @@ h_files=`ls *.h | egrep -v "^ui_.*\.h$"`
   $h_files \
   -- \
   -c -std=c++11 -fPIC \
+  -I../BinaryNewickVector \
+  -I../Newick \
+  -I../NewickVector \
   -I../RibiClasses/CppAbout \
   -I../RibiClasses/CppHelp \
   -I../RibiClasses/CppTestTimer \
@@ -17,6 +20,7 @@ h_files=`ls *.h | egrep -v "^ui_.*\.h$"`
   -I../RibiClasses/CppQtAboutDialog \
   -I../RibiClasses/CppQtHideAndShowDialog \
   -I../RibiClasses/CppTrace \
+  -I../TwoDigitNewick \
   -I/usr/include/c++/5 \
   -I/usr/include/x86_64-linux-gnu/c++/5 \
   -I/usr/include/qt4 \

@@ -30,7 +30,7 @@ before_script:
   - sleep 3 # give xvfb some time to start
 
 script: 
-  - ./download_other_githubs.sh
+  - ./install_other_githubs.sh
   - ./build_other_githubs.sh
   - ./build_desktop.sh
   - ./build_console.sh
