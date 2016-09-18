@@ -13,15 +13,12 @@
 
 #include "newickvector.h"
 #include "manydigitnewick.h"
-#include "testtimer.h"
 #include "trace.h"
 #pragma GCC diagnostic pop
 
 ribi::tmdn::MenuDialog::MenuDialog()
 {
-  #ifndef NDEBUG
-  Test();
-  #endif
+
 }
 
 int ribi::tmdn::MenuDialog::ExecuteSpecific(const std::vector<std::string>& argv) noexcept
@@ -78,19 +75,3 @@ std::vector<std::string> ribi::tmdn::MenuDialog::GetVersionHistory() const noexc
     "2015-12-03: version 2.0: moved to own GitHub",
   };
 }
-
-#ifndef NDEBUG
-void ribi::tmdn::MenuDialog::Test() noexcept
-{
-  {
-    static bool is_tested{false};
-    if (is_tested) return;
-    is_tested = true;
-  }
-  {
-    NewickVector::Test();
-    ManyDigitNewick();
-  }
-  const TestTimer test_timer(__func__,__FILE__,1.0);
-}
-#endif
