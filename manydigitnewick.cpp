@@ -35,7 +35,6 @@ along with this program.If not, see <http://www.gnu.org/licenses/>.
 #include "newickvector.h"
 #include "newick.h"
 #include "manydigitnewickindexer.h"
-#include "testtimer.h"
 #pragma GCC diagnostic pop
 
 double ribi::ManyDigitNewick::sm_theta = -1.0;
@@ -48,9 +47,6 @@ ribi::ManyDigitNewick::ManyDigitNewick()
     m_sum_terms_above_zero(-1),
     m_sum_terms_above_one(-1)
 {
-  #ifndef NDEBUG
-  Test();
-  #endif
   assert(this->Empty());
 }
 
@@ -181,34 +177,3 @@ void ribi::ManyDigitNewick::SetTheta(const double theta)
   assert(theta >= 0.0);
   sm_theta = theta;
 }
-
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wunused-local-typedefs"
-#ifndef NDEBUG
-void ribi::ManyDigitNewick::Test() noexcept
-{
-  {
-    static bool is_tested{false};
-    if (is_tested) return;
-    is_tested = true;
-  }
-  {
-    ribi::MultiVector<int>();
-  }
-  const TestTimer test_timer(__func__,__FILE__,1.0);
-  const double theta = 10.0;
-  ribi::ManyDigitNewick::SetTheta(theta);
-  const std::vector<std::string> v = Newick().CreateValidNewicks();
-  for(const std::string& s: v)
-  {
-    if ( Newick().CalcComplexity(Newick().StringToNewick(s))
-      >  BigInteger(10000) )
-    {
-      continue;
-    }
-    ribi::ManyDigitNewick::CalculateProbability(s,theta);
-  }
-}
-#endif // NDEBUG
-#pragma GCC diagnostic pop
-

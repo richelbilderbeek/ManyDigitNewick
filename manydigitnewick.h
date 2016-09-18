@@ -96,10 +96,6 @@ struct ManyDigitNewick
     const int sum_above_zero,
     const int sum_above_one) const;
 
-  #ifndef NDEBUG
-  static void Test() noexcept;
-  #endif
-
   public:
 
   static double CalculateProbability(

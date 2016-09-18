@@ -32,8 +32,10 @@ before_script:
 script: 
   - ./install_other_githubs.sh
   - ./build_other_githubs.sh
+  - ./build_test.sh
   - ./build_desktop.sh
   - ./build_console.sh
+  - ./ManyDigitNewickTest
   - ./get_code_cov.sh
   - codecov
   - ./do_oclint.sh
