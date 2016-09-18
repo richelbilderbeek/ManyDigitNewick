@@ -56,15 +56,15 @@ ribi::tmdn::QtMainDialog::QtMainDialog(QWidget *parent) :
   ui->setupUi(this);
   QObject::connect(
     ui->edit_newick,
-    static_cast<void (QLineEdit::*)(const QString&)>(&QLineEdit::textChanged),
+    SIGNAL(textChanged(QString)),
     this,
-    &ribi::tmdn::QtMainDialog::OnAnyChange
+    SLOT(OnAnyChange())
   );
   QObject::connect(
     ui->edit_theta,
-    static_cast<void (QLineEdit::*)(const QString&)>(&QLineEdit::textChanged),
+    SIGNAL(textChanged(QString)),
     this,
-    &ribi::tmdn::QtMainDialog::OnAnyChange
+    SLOT(OnAnyChange())
   );
 
   //Put the dialog in the screen center
