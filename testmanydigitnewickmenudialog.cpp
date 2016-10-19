@@ -45,7 +45,7 @@ ribi::About ribi::tmdn::MenuDialog::GetAbout() const noexcept
     GetVersionHistory());
 
   about.AddLibrary("BigInt: version 2010.04.30");
-  about.AddLibrary("NewickVector: version " + NewickVector::GetVersion());
+  about.AddLibrary("NewickVector: version " + GetNewickVectorVersion());
   about.AddLibrary("ManyDigitNewick: version " + ManyDigitNewick::GetVersion());
   return about;
 }

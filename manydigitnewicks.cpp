@@ -58,11 +58,11 @@ ribi::ManyDigitNewicks::ManyDigitNewicks(const int n_reserved, const double thet
 
     ManyDigitNewick n(v,saz,sao);
 
-    n.SetProbability(Newick().CalcProbabilitySimpleNewick(
+    n.SetProbability(newick::CalcProbabilitySimpleNewick(
       {
-        static_cast<int>(Newick::bracket_open),
+        static_cast<int>(newick::bracket_open),
         i,
-        static_cast<int>(Newick::bracket_close)
+        static_cast<int>(newick::bracket_close)
       },
       theta)
     );

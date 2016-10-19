@@ -43,10 +43,10 @@ BOOST_AUTO_TEST_CASE(ribi_ManyDigitNewick_all)
 {
   const double theta = 10.0;
   ribi::ManyDigitNewick::SetTheta(theta);
-  const std::vector<std::string> v = ribi::Newick().CreateValidNewicks();
+  const std::vector<std::string> v = ribi::newick::CreateValidNewicks();
   for(const std::string& s: v)
   {
-    if ( ribi::Newick().CalcComplexity(ribi::Newick().StringToNewick(s))
+    if ( ribi::newick::CalcComplexity(ribi::newick::StringToNewick(s))
       >  BigInteger(10000) )
     {
       continue;

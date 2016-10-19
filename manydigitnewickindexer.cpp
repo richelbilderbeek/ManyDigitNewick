@@ -52,10 +52,10 @@ ribi::ManyDigitNewickIndexer::ManyDigitNewickIndexer(
   assert(m_current_index == m_newicks.Size());
 
   //If the Newick is simple
-  if (Newick().IsSimple(n.Peek()))
+  if (newick::IsSimple(n.Peek()))
   {
     //Calculate the Ewens probability only
-    m_probability = Newick().CalcProbabilitySimpleNewick(n.Peek(),theta);
+    m_probability = newick::CalcProbabilitySimpleNewick(n.Peek(),theta);
     return;
   }
 
@@ -87,21 +87,21 @@ ribi::ManyDigitNewickIndexer::ManyDigitNewickIndexer(
     std::size_t j = 0;
     for (i=0 ; i!=sz; ++i) //Index of opening bracket
     {
-      if (v[i]!=Newick::bracket_open) continue;
+      if (v[i]!=newick::bracket_open) continue;
       for (j=i+1; j!=sz; ++j)
       {
-        if (v[j]==Newick::bracket_open) { j = 0; break; }
-        if (v[j]!=Newick::bracket_close) continue;
+        if (v[j]==newick::bracket_open) { j = 0; break; }
+        if (v[j]!=newick::bracket_close) continue;
         break;
       }
       if (j == 0) continue; //j cannot be 0 after previous for loop
       break;
     }
     //Find simplest leaf
-    assert(v[i]==Newick::bracket_open);
-    assert(v[j]==Newick::bracket_close);
+    assert(v[i]==newick::bracket_open);
+    assert(v[j]==newick::bracket_close);
     std::vector<int> v_new(v.begin(),v.begin() + i);
-    //assert(Newick::IsNewick(v_new));
+    //assert(newick::IsNewick(v_new));
     //const int x = v[i+1];
     //const int y = v[i+2];
 
@@ -172,10 +172,10 @@ const ribi::NewickVector ribi::ManyDigitNewickIndexer::ConstructNewick(const int
 
   if (i < m_reserved)
   {
-    v.push_back(Newick::bracket_open);
+    v.push_back(newick::bracket_open);
     //Newick '(0)' is not valid, so fake it as '(1)'
     v.push_back(i == 0 ? 1 : i);
-    v.push_back(Newick::bracket_close);
+    v.push_back(newick::bracket_close);
     NewickVector n(v);
     return n;
   }
@@ -183,11 +183,11 @@ const ribi::NewickVector ribi::ManyDigitNewickIndexer::ConstructNewick(const int
   //Search for index i in Indextable to get two digits
   {
     const std::vector<int> p = m_index_table.Find(i).ToVector();
-    v.push_back(Newick::bracket_open);
+    v.push_back(newick::bracket_open);
     std::copy(p.begin(),p.end(),std::back_inserter(v));
-    v.push_back(Newick::bracket_close);
+    v.push_back(newick::bracket_close);
   }
-  assert(Newick().IsNewick(v));
+  assert(newick::IsNewick(v));
 
   //As long as there are not only reserved (that is: simple)
   //values in v, replace those by their simplers
@@ -200,16 +200,16 @@ const ribi::NewickVector ribi::ManyDigitNewickIndexer::ConstructNewick(const int
     assert(*i >= m_reserved);
     //Create a new std::vector from the v's begin to i
     std::vector<int> v_new( v.begin(),i);
-    v_new.push_back(Newick::bracket_open);
+    v_new.push_back(newick::bracket_open);
     const std::vector<int> p = m_index_table.Find(*i).ToVector();
     assert(p.size() == 2 && "For now...");
     v_new.push_back(p[0]);
     v_new.push_back(p[1]);
-    v_new.push_back(Newick::bracket_close);
+    v_new.push_back(newick::bracket_close);
     //Copy the remainder of v (from after i) to v_new
     std::copy(i+1,v.end(),std::back_inserter(v_new));
     std::swap(v,v_new);
-    assert(Newick().IsNewick(v));
+    assert(newick::IsNewick(v));
   }
   NewickVector n(v);
   return n;
@@ -557,7 +557,7 @@ const ManyDigitNewick
 */
 
 ///GetDeltaSumAboveZero calculates the delta in the
-///ManyDigitNewick::m_sum_above_zero of a new Newick
+///ManyDigitnewick::m_sum_above_zero of a new Newick
 ///when an old_value is changed.
 int ribi::ManyDigitNewickIndexer::GetDeltaSumAboveZero(const int old_value) const
 {
@@ -566,7 +566,7 @@ int ribi::ManyDigitNewickIndexer::GetDeltaSumAboveZero(const int old_value) cons
 }
 
 ///GetDeltaSumAboveOne calculates the delta in the
-///ManyDigitNewick::m_sum_above_one of a new Newick
+///ManyDigitnewick::m_sum_above_one of a new Newick
 ///when an old_value is changed.
 int ribi::ManyDigitNewickIndexer::GetDeltaSumAboveOne(
   const ManyDigitNewickDerivative& d) const
@@ -657,10 +657,10 @@ int ribi::ManyDigitNewickIndexer::SummarizeNewick(
   if (coordinat.AllSimple(m_reserved))
   {
     std::vector<int> v;
-    v.push_back(Newick::bracket_open);
+    v.push_back(newick::bracket_open);
     std::copy(coordinat.ToVector().begin(),coordinat.ToVector().end(),std::back_inserter(v));
-    v.push_back(Newick::bracket_close);
-    n.SetProbability(Newick().CalcProbabilitySimpleNewick(v,m_theta));
+    v.push_back(newick::bracket_close);
+    n.SetProbability(newick::CalcProbabilitySimpleNewick(v,m_theta));
     //If the user requests simple Newicks to be solved,
     //perhaps the requested probability has just been calculated
     m_probability = n.GetProbability();
