@@ -41,7 +41,6 @@ along with this program.If not, see <http://www.gnu.org/licenses/>.
 #include "fuzzy_equal_to.h"
 #include "manydigitnewickindexer.h"
 #include "newick.h"
-#include "testtimer.h"
 #include "qtaboutdialog.h"
 #include "ribi_random.h"
 #include "twodigitnewick.h"
